@@ -2,21 +2,27 @@
     <div class="recommended-box">
         <div class="shoplist-title">推荐商家</div>
         <filter-view :filterData="filterData" @updateShop="updateShop"></filter-view>
+        <shop-list :datas="restaurants"></shop-list>
     </div>
 </template>
 <script>
-import { getFilter } from '../../api/recommended'
+import { getFilter, getshop } from '../../api/recommended'
 import FilterView from '../FilterView/FilterView'
+import ShopList from '../ShopList/ShopList'
 
 export default {
     name: "recommended",
     data() {
         return {
-            filterData: null
+            filterData: null,
+            page: 1,
+            size: 10,
+            restaurants: []
         }
     },
     created() {
         this._getFilter()
+        this._getshop()
     },
     methods: {
         _getFilter() {
@@ -25,12 +31,19 @@ export default {
                 this.filterData = res
             })
         },
+        _getshop() {
+          getshop(this.page, this.size).then(res => {
+            // console.log(res)
+            this.restaurants = res
+          })
+        },
         updateShop(condition){
             console.log(condition)
         }
     },
     components: {
-        FilterView
+        FilterView,
+        ShopList
     }
 }
 </script>
