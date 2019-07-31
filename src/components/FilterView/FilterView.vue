@@ -10,7 +10,7 @@
         </div>
         <div class="filter-content" v-if="isSort || isScreen">
            <filter-exten :sortBy="filterData.sortBy" :isShow="isSort" v-if="filterData" @changeNav="changeNav" @update="update"></filter-exten>
-            <filter-sort :screenBy="filterData.screenBy" :isShow="isScreen" v-if="filterData"></filter-sort>
+            <filter-sort :screenBy="filterData.screenBy" :isShow="isScreen" v-if="filterData" @update="update"></filter-sort>
         </div>
       
     </div>
@@ -70,10 +70,10 @@ export default {
         },
         changeNav(name) {
           this.filterData.navTab[0].name = name
-          this.hideView()
         },
         update(condation) {
           this.$emit('updateShop', condation)
+           this.hideView()
         }
     }
 }
