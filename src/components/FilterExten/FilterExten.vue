@@ -32,16 +32,6 @@
   }
 </script>
 <style scoped>
-.filter-exten-box {
-  background-color: #fff;
-  color: #333;
-  padding-top: 2.133333vw;
-  position: absolute;
-  width: 100%;
-  z-index: 4;
-  left: 0;
-  top: 24.533333vw;
-}
 .filter-exten-box li {
   position: relative;
   padding-left: 5.333333vw;

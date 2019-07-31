@@ -68,7 +68,7 @@ export default {
 }
 
 .search-wrap {
-    padding: 15px;
+    padding: 10px 15px;
     background-color: #009eef;
 }
 
