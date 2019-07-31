@@ -1,7 +1,7 @@
 <template>
     <div class="recommended-box">
         <div class="shoplist-title">推荐商家</div>
-        <filter-view :filterData="filterData"></filter-view>
+        <filter-view :filterData="filterData" @updateShop="updateShop"></filter-view>
     </div>
 </template>
 <script>
@@ -24,6 +24,9 @@ export default {
                 // console.log(res)
                 this.filterData = res
             })
+        },
+        updateShop(condition){
+            console.log(condition)
         }
     },
     components: {

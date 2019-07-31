@@ -26,7 +26,7 @@ export default {
             showFilter: false
         }
     },
-    created() {
+    mounted() {
         this.getBus()
     },
     methods: {

@@ -4,14 +4,16 @@
             <aside class="filter">
                 <div class="filter-nav" v-for="(item, index) in filterData.navTab" :key="index" :class="{'filter-bold': currentFilter === index}" @click="filterSort(index)">
                     <span>{{item.name}}</span>
-                    <i v-if="item.icon" class="'fa fa' + item.icon"></i>
+                    <i v-if="item.icon" :class="'fa fa-' + item.icon"></i>
                 </div>
             </aside>
         </div>
+       <filter-exten :sortBy="filterData.sortBy" :isShow="isSort" v-if="filterData" @changeNav="changeNav" @update="update"></filter-exten>
     </div>
 </template>
 <script>
 import Bus from '../../common/js/bus'
+import FilterExten from '../FilterExten/FilterExten'
 
 export default {
     name: "filter_view",
@@ -24,6 +26,9 @@ export default {
             isSort: false
         }
     },
+    components: {
+      FilterExten
+    },
     methods: {
         filterSort(index) {
             this.currentFilter = index
@@ -31,6 +36,14 @@ export default {
                 case 0:
                   this.isSort = true
                   Bus.$emit('searchFixed', true)
+                  break
+                case 1:
+                  this.$emit('updateShop', {condation: this.filterData.navTab[1].condition})
+                  this.hideView()
+                  break
+                case 2:
+                  this.$emit('updateShop', {condation: this.filterData.navTab[2].condition})
+                  this.hideView()
                   break
                 default:
                   this.hideView()
@@ -40,6 +53,13 @@ export default {
         hideView() {
           this.isSort = false
           Bus.$emit('searchFixed', false)
+        },
+        changeNav(name) {
+          this.filterData.navTab[0].name = name
+          this.hideView()
+        },
+        update(condation) {
+          this.$emit('updateShop', condation)
         }
     }
 }
