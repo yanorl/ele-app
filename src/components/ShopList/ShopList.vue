@@ -12,13 +12,7 @@
   						<span>{{item.restaurant.name}}</span>	
   					</div>
   					<div class="rate-box">
-  						<div class="rating-content">
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  							<i class="fa fa-star"></i>
-  						</div>
+  						<my-rating :rating="item.restaurant.rating"></my-rating>
   						<span class="rate-text">{{item.restaurant.rating}}</span>
   						<span>月售{{item.restaurant.recent_order_num}}单</span>
   					</div>
@@ -28,7 +22,7 @@
   							<span>配送费¥{{item.restaurant.float_delivery_fee}}</span>
   						</div>
   						<div class="limit-right">
-  							<span>1km</span> |
+  							<span>{{(item.restaurant.distance / 1000).toFixed(2)}}km</span> |
   							<span>{{item.restaurant.order_lead_time}}</span>
   						</div>
   					</div>
@@ -40,10 +34,15 @@
 </template>
 
 <script>
+import MyRating from '../Rating/Rating'
+
   export default{
     name: "shop-list",
     props: {
     	datas: Array
+    },
+    components: {
+    	MyRating
     }
   }
 </script>
@@ -104,10 +103,8 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  justify-content: space-between;
 }
-
-.rate-box .rate-text {
+.rate-text {
   margin-right: 1.066667vw;
 }
 .limit-box {
