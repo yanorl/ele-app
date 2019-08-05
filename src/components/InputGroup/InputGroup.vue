@@ -29,15 +29,15 @@
 .input-group {
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 .input-group input {
-  height: 100%;
-  width: 60%;
-  outline: none;
+      outline: none;
+    padding: 10px;
+    flex: 1;
+        border: none;
 }
 .input-group button {
   border: none;
