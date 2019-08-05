@@ -5,7 +5,7 @@
                 <i class="fa fa-search"></i>
                 <input type="text" v-model="city_val" placeholder="输入城市名">
             </div>
-            <button @click="back">取消</button>
+            <span @click="back">取消</span>
         </div>
         <template v-if="searchList.length === 0">
             <div class="location">
@@ -125,15 +125,15 @@ export default {
 
 .search input {
     flex: 1;
-    padding: 0 10px;
+    padding: 10px;
     background: #eee;
     outline: none;
     border: none;
-    line-height: 35px;
 }
 
-.search-wrap button {
-    outline: none;
+.search-wrap span {
+    display: inline-block;
+    padding: 10px;
     color: #009eef;
 }
 
@@ -154,7 +154,7 @@ export default {
 
 .search-list li {
     background: #fff;
-        padding: 10px 16px;
+    padding: 10px 16px;
     border-bottom: 1px solid #eee;
     height: 25px;
     line-height: 25px;
