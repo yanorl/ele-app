@@ -78,6 +78,7 @@ export default {
                 })
             })
             this.$emit('update', {condation: screenData})
+             this.$emit('hideView')
         }
     }
 }

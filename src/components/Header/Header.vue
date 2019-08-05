@@ -1,5 +1,5 @@
 <template>
-    <div class="header-box">
+    <div class="header-box" ref="headerBox">
         <div class="address-map" @click="addressClick">
             <i class="fa fa-map-marker"></i>
             <span>{{address}}</span>
@@ -38,6 +38,9 @@ export default {
             Bus.$on('searchFixed', function(el) {
                 that.showFilter = el
             })
+        },
+        ChildClentHeight() {
+            return this.$refs.headerBox.clientHeight
         }
 
     }

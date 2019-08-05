@@ -1,7 +1,7 @@
 <template>
     <div class="filter_view-box" :class="{'popover_bg': isSort || isScreen}" @click.self="hideView">
-        <div class="filter_wrap" v-if="filterData">
-            <aside class="filter">
+        <div class="filter_wrap" ref="filterWrap">
+            <aside class="filter"  v-if="filterData" >
                 <div class="filter-nav" v-for="(item, index) in filterData.navTab" :key="index" :class="{'filter-bold': currentFilter === index}" @click="filterSort(index)">
                     <span>{{item.name}}</span>
                     <i v-if="item.icon" :class="'fa fa-' + item.icon"></i>
@@ -16,9 +16,9 @@
     </div>
 </template>
 <script>
-import Bus from '../../common/js/bus'
-import FilterExten from '../FilterExten/FilterExten'
 import FilterSort from '../FilterSort/FilterSort'
+import FilterExten from '../FilterExten/FilterExten'
+import FilterTab from '../FilterTab/FilterTab'
 
 export default {
     name: "filter_view",
@@ -26,13 +26,10 @@ export default {
         filterData: Object
     },
     data() {
-        return{
-            currentFilter: 0,
-            isSort: false, 
-            isScreen: false
-        }
+        return{}
     },
     components: {
+      FilterTab,
       FilterExten,
       FilterSort
     },
@@ -44,6 +41,7 @@ export default {
                   this.isSort = true
                   this.isScreen = false
                   Bus.$emit('searchFixed', true)
+                  this.$emit('changFlog', index)
                   break
                 case 1:
                   this.$emit('updateShop', {condation: this.filterData.navTab[1].condition})
@@ -57,6 +55,7 @@ export default {
                    this.isSort = false
                    this.isScreen = true
                    Bus.$emit('searchFixed', true)
+                   this.$emit('changFlog', index)
                   break
                 default:
                   this.hideView()
@@ -67,6 +66,7 @@ export default {
           this.isSort = false
           this.isScreen = false
           Bus.$emit('searchFixed', false)
+          this.$emit('newResh')
         },
         changeNav(name) {
           this.filterData.navTab[0].name = name
@@ -74,45 +74,14 @@ export default {
         update(condation) {
           this.$emit('updateShop', condation)
            this.hideView()
+        },
+        ClientTop() {
+           return this.$refs.filterWrap.getBoundingClientRect().top
         }
     }
 }
 </script>
 <style scoped>
-.filter_wrap {
-  background: #fff;
-  position: sticky;
-  top: 54px;
-  z-index: 10;
-}
-.filter {
-  position: relative;
-  border-bottom: 1px solid #ddd;
-  line-height: 10.4vw;
-  z-index: 101;
-  height: 10.666667vw;
-  display: flex;
-  justify-content: space-around;
-}
-.filter-nav {
-  flex: 1;
-  text-align: center;
-  color: #666;
-  font-size: 0.8333rem;
-}
-.filter-nav i {
-  width: 1.6vw;
-  height: 0.8vw;
-  margin-left: 1.333333vw;
-  margin-bottom: 0.533333vw;
-  fill: #333;
-  will-change: transform;
-}
-
-.filter-bold {
-  font-weight: 600;
-  color: #333;
-}
 
 .popover_bg{
   position: fixed;
@@ -127,11 +96,10 @@ export default {
 .filter-content{
    background-color: #fff;
   color: #333;
-  padding-top: 2.133333vw;
+  padding-top: 8px;
   position: absolute;
   width: 100%;
   z-index: 4;
   left: 0;
-  top: 24.533333vw;
 }
 </style>

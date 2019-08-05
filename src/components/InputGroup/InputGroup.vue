@@ -37,6 +37,7 @@
       outline: none;
     padding: 10px;
     flex: 1;
+        border: none;
 }
 .input-group button {
   border: none;

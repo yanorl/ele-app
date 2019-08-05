@@ -25,8 +25,13 @@
     methods: {
     	selectSort(item, index){
     		this.currentSort = index
-    		this.$emit('changeNav', this.sortBy[index].name)
-    		this.$emit('update', {condation: item.code})
+        console.log(index)
+        return
+        let datas = {
+          name: this.sortBy[index].name,
+          condation: {condation: item.code}
+        }
+    		this.$emit('changeNav', datas)
     	}
     }
   }

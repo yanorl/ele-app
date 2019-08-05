@@ -50,49 +50,49 @@ import MyRating from '../Rating/Rating'
 .shop-item {
   background: #fff;
   color: #666;
-  padding: 4vw 0;
-  border-bottom: 0.133333vw solid #eee;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
 }
 .shop-info {
   display: flex;
   justify-content: flex-start;
-  padding: 0 2.666667vw;
+  padding: 0 10px;
   align-items: stretch;
 }
 .img-box {
-  width: 17.333333vw;
-  height: 17.333333vw;
+  width: 65px;
+  height: 65px;
 }
 .img-box img {
   display: block;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  border: 0.133333vw solid rgba(0, 0, 0, 0.08);
-  border-radius: 0.533333vw;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
 }
 .shop-content {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
   flex-direction: column;
-  padding-left: 2.666667vw;
-  font-size: 0.2rem;
+  padding-left: 10px;
+  font-size: 12px;
   flex-grow: 1;
 }
 .shop-name {
   align-items: center;
   color: #333;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 14px ;
 }
 .shop-name i {
   background: #ffe800;
-  margin-right: 1.333333vw;
-  padding: 0.266667vw 0.666667vw;
+  margin-right: 5px;
+  padding: 2px 3px;
   text-align: center;
   white-space: nowrap;
-  font-size: 0.6rem;
+  font-size: 12px
 }
 .shop-name span {
   overflow: hidden;
@@ -105,7 +105,7 @@ import MyRating from '../Rating/Rating'
   overflow: hidden;
 }
 .rate-text {
-  margin-right: 1.066667vw;
+  margin-right: 5px;
 }
 .limit-box {
   width: 100%;

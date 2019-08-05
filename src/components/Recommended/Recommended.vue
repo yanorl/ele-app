@@ -1,49 +1,34 @@
 <template>
     <div class="recommended-box">
         <div class="shoplist-title">推荐商家</div>
-        <filter-view :filterData="filterData" @updateShop="updateShop"></filter-view>
+        <filter-view :filterData="filterData" @updateShop="updateShop" ref="filterViews"></filter-view>
         <shop-list :datas="restaurants"></shop-list>
     </div>
 </template>
 <script>
-import { getFilter, getshop } from '../../api/recommended'
 import FilterView from '../FilterView/FilterView'
 import ShopList from '../ShopList/ShopList'
 
 export default {
     name: "recommended",
+    props: {
+        filterData: Object,
+        restaurants: Array
+    },
     data() {
-        return {
-            filterData: null,
-            page: 1,
-            size: 10,
-            restaurants: []
-        }
-    },
-    created() {
-        this._getFilter()
-        this._getshop()
-    },
-    methods: {
-        _getFilter() {
-            getFilter().then(res => {
-                // console.log(res)
-                this.filterData = res
-            })
-        },
-        _getshop() {
-          getshop(this.page, this.size).then(res => {
-            // console.log(res)
-            this.restaurants = res
-          })
-        },
-        updateShop(condition){
-            console.log(condition)
-        }
+        return {}
     },
     components: {
         FilterView,
         ShopList
+    },
+    methods: {
+        updateShop(condition) {
+            console.log(condition)
+        },
+        ChildClientTop() {
+           return this.$refs.filterViews.ClientTop()
+        }
     }
 }
 </script>

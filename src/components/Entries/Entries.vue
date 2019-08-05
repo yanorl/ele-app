@@ -25,7 +25,7 @@ export default {
 <style scoped>
 .entries {
   background: #fff;
-  height: 47.2vw;
+  height: 177px;
   text-align: center;
   overflow: hidden;
 }
@@ -33,13 +33,13 @@ export default {
   width: 20%;
   float: left;
   position: relative;
-  margin-top: 2.933333vw;
+  margin-top: 10px;
 }
 .foodentry .img_wrap {
   position: relative;
   display: inline-block;
-  width: 12vw;
-  height: 12vw;
+  width: 45px;
+  height: 45px;
 }
 .img_wrap img {
   width: 100%;
@@ -48,6 +48,6 @@ export default {
 .foodentry span {
   display: block;
   color: #666;
-  font-size: 0.32rem;
+  font-size: 12px;
 }
 </style>

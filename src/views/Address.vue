@@ -117,7 +117,7 @@ export default {
     background-color: #eee;
     border-radius: 10px;
     box-sizing: border-box;
-        display: flex;
+    display: flex;
     align-items: center;
 }
 
@@ -130,13 +130,11 @@ export default {
 }
 
 .search input {
-       flex: 1;
-    padding: 0 10px;
+    flex: 1;
+    padding: 10px;
     background-color: #eee;
     outline: none;
     border: none;
-    height: 40px;
-    line-height: 40px;
 }
 
 .area {
